@@ -14,6 +14,4 @@ require('dotenv').config();
     }    
 );
 
-(async () => await sequelize.sync().catch(err));
-
 module.exports = sequelize;

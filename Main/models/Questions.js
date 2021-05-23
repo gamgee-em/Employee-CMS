@@ -9,7 +9,7 @@ const action = [
     },
   ];
 
-const employee = (answers) => {
+/* const employee = (answers) => {
   inquirer.prompt([
     {
       name: 'emp_type',
@@ -18,9 +18,9 @@ const employee = (answers) => {
       choices: ['Manager', 'Engineer'],
     },
   ]);
-};
+}; */
 
 module.exports = {
     action, 
-    employee
+    //employee
 };

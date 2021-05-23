@@ -1,40 +1,29 @@
-const { Model, DataTypes } = require('sequelize');
+const { Sequelize, Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 class Employee extends Model {}
 
 Employee.init(
   {
-    book_id: {
+    id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
+      allowNull: false,
     },
-    title: {
-      type: DataTypes.STRING,
-    },
-    author: {
-      type: DataTypes.STRING,
-    },
-    isbn: {
-      type: DataTypes.STRING,
-    },
-    pages: {
-      type: DataTypes.INTEGER,
-    },
-    edition: {
-      type: DataTypes.INTEGER,
-    },
-    is_paperback: {
-      type: DataTypes.BOOLEAN,
-    },
+    fname: { type: DataTypes.STRING },
+    lname: { type: DataTypes.STRING },
+    role: { type: DataTypes.STRING },
+    salary: { type: DataTypes.DECIMAL(11,2)},
+    isbn: { type: DataTypes.STRING },
   },
   {
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'employee',
+    modelName: 'Employee',
+    tableName: 'Employees',
   }
 );
 
@@ -47,5 +36,8 @@ Employee.init(
 },{
     tableName: 'Employees'
 }); */
+
+//! check if code executed
+console.log(Employee === sequelize.models.Employee);
 
 module.exports = Employee;

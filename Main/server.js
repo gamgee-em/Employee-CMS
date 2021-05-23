@@ -1,7 +1,7 @@
 //! Use connection.js to make connection to mysql
 //* run command < server.js to connect to server >
 const express = require('express');
-//const routes = require('./routes');
+const routes = require('./routes');
 const sequelize = require('./config/connection');
 
 const app = express();
@@ -11,12 +11,17 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // turn on routes
-//app.use(routes);
+app.use(routes);
 
 // turn on connection to db and server
 
-sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => {
-    console.log('Server now listening on PORT:', PORT)
-  });
-});
+(async () => await sequelize.sync({ force: false })
+  .catch((err) => {
+    console.log('Server now listening on PORT:', PORT);
+  })
+)();
+
+//? alter: true/false or force: true/false
+/* sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, () => console.log('Server now listening on PORT:', PORT));
+}); */
