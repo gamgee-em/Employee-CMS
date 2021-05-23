@@ -14,17 +14,6 @@ require('dotenv').config();
     }    
 );
 
-(async () => {
-    //await sequelize.sync();
-    try {
-        await sequelize.authenticate();
-        console.log('Connection successfully established!')
-    } catch(err) {
-        if (err) throw ('Connection unsuccessful', err);
-    } /* finally{
-        console.log('Try & Catch aren\'t working. So, neither am I. Beer time! 🤷‍♂️ ')
-    } */
-})();
-
+(async () => await sequelize.sync().catch(err));
 
 module.exports = sequelize;
