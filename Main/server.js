@@ -2,20 +2,10 @@
 //* run command < server.js to connect to server >
 const express = require('express');
 const routes = require('./routes');
-const sequelize = require('./config/connection');
-
 const app = express();
-const PORT = process.env.PORT || 3001;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // turn on routes
 app.use(routes);
-
-// turn on connection to db and server
-//? alter: true/false or force: true/false
-(async() => await sequelize.sync({ force: true })
-  .then(() => {
-    app.listen(PORT, () => console.log('Server listening on PORT:', PORT))
-  }))().catch(err => err);

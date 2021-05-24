@@ -1,22 +1,63 @@
-const action = [
+const actionQ = [
     {
       name: 'action',
       message: 'Please select an option',
       type: 'list',
-      choices: ['Add Departments', 'Add Employee(s)'],
+      choices: [
+        'Add Department', 
+        'Add Employee',
+        'View All Employees',
+        'Remove an Employee',
+        'Quit',
+      ],
     },
-  ];
+];
 
-const empType = [
+const empGenQ = [
+  {
+    name: 'emp_fname',
+    message: 'Enter first name:',
+    type: 'input'
+  },
+  {
+    name: 'emp_lname',
+    message: 'Enter last name:',
+    type: 'input'
+  },
+  {
+    name: 'emp_role',
+    message: 'What is their role?',
+    type: 'list',
+    choices: ['Engineer', 'Manager'],
+  },
+  {
+    name: 'manager_name',
+    message: 'Who is their manager?',
+    type: 'list',
+    choices: ['Jenna Smith', 'George Bunts']
+  }
+];
+
+const managerQ = [
     {
-      name: 'emp_type',
-      message: 'Which type of Employee would you like to add?',
-      type: 'list',
-      choices: ['Engineer', 'Manager'],
+      name: 'manager_fname',
+      message: 'Enter the managers first name:',
+      type: 'input',
     },
-  ];
+    {
+      name: 'manager_lname',
+      message: 'Enter the managers last name:',
+      type: 'input',
+    },
+    {
+      name: 'manager_salary',
+      message: 'Enter the managers salary:',
+      type: 'input',
+    }
+];
 
 module.exports = {
-    action, 
-    empType
+    actionQ, 
+    managerQ,
+    empGenQ
 };

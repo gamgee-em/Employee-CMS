@@ -1,41 +1,78 @@
-const { questions, action, empType } = require('./models/Questions');
+const { questions, actionQ, empGenQ, managerQ } = require('./models/Questions');
 const inquirer = require('inquirer');
 const Employee = require('./models/Employees');
-const seedDataBase = require('./seeds/employee');
+const sequelize = require('./config/connection');
+const cTable = require('console.table');
+const PORT = process.env.PORT || 3001;
 
 // IIFE starts application when node index.js is ran 
-(init = () => {
-    inquirer.prompt(action)
+// turn on connection to db and server
+//? alter: true/false or force: true/false
+(async() => await sequelize.authenticate({ force: true })
+  .then(() => {
+    console.log('Server listening on PORT:', PORT)
+    initApp();
+    //app.listen(PORT, () => console.log('Server listening on PORT:', PORT));
+}))().catch(err => err);
+
+const initApp = () => {
+    inquirer.prompt(actionQ)
         .then((answers) => {
-            console.log('Answers:', answers);
             switch(answers.action) {
-                case 'Add Departments':
-                    console.log('Add Department');
+                case 'Add Department':
+                    renderDepartment();
                 break;
-                case 'Add Employee(s)':
-                    console.log('Add Employee(s)');
-                    employeeType();
-                    //Employee.create(answers.action)
-                break;
-            }
-        })
-    })();
+                case 'Add Employee':
+                    renderEmployee(answers);
+                    break;
+                case 'View All Employees':
+                    displayEmployees();
+                    break;
+                case 'Quit':
+                    sequelize.close();
+                    break;
+                default:
+                    sequelize.close();
+            };
+        });
+};
 
-/* const init = () => {
-
-} */
-
-const employeeType = () => {
-    inquirer.prompt(empType)
+let newEmp;
+const renderEmployee = (answers) => {
+    inquirer.prompt(empGenQ)
     .then((answers) => {
-        console.log('Answers.empType:', answers.emp_type);
-        switch(answers.emp_type) {
-            case 'Engineer':
-                seedDataBase();
-            break;
-            case 'Manager':
-                console.log('Answers.emptype:', answers.emp_type);
-            break;
-        };
+        console.log(answers);
+        newEmp = Employee.create({
+            fname: answers.emp_fname,
+            lname: answers.emp_lname,
+            emp_role: answers.emp_role,
+            manager_name: answers.manager_name
+        });
     });
 };
+
+const displayEmployees = async(answers) => {
+    console.log(newEmp)
+    //const newEmp = await Employee.findAll();
+    //console.table('Employees', ['emp_id','fname', 'lname', 'emp_role', 'manager_name']);
+};
+
+const renderEmpRole = () => {
+    inquirer.prompt(empTypeQ)
+}
+
+const renderEngineer = () => {
+    inquirer.prompt(engineerQ)
+        .then((answers) => {
+
+        })
+};
+
+const renderManager = () => {
+    inquirer.prompt(managerQ)
+        .then((answers) => {
+
+        })
+};
+
+module.exports = initApp;
