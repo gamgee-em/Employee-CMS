@@ -1,0 +1,23 @@
+[
+    {
+        "fname": "Thao",
+        "lname": "Em",
+        "role": "Manager",
+        "salary": 111000.99,
+        "isbn": "1"
+    },
+    {
+        "fname": "Krit",
+        "lname": "Sweigart",
+        "role": "Engineer",
+        "salary": 126000.08,
+        "isbn": "2"
+    },
+    {
+        "fname": "Sam",
+        "lname": "Em",
+        "role": "Engineer",
+        "salary": 336000.03,
+        "isbn": "3"
+    }
+  ]

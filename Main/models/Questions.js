@@ -1,5 +1,3 @@
-//const inquirer = requirer('inquire');
-
 const action = [
     {
       name: 'action',
@@ -9,18 +7,16 @@ const action = [
     },
   ];
 
-/* const employee = (answers) => {
-  inquirer.prompt([
+const empType = [
     {
       name: 'emp_type',
       message: 'Which type of Employee would you like to add?',
       type: 'list',
-      choices: ['Manager', 'Engineer'],
+      choices: ['Engineer', 'Manager'],
     },
-  ]);
-}; */
+  ];
 
 module.exports = {
     action, 
-    //employee
+    empType
 };

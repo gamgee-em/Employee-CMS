@@ -14,14 +14,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(routes);
 
 // turn on connection to db and server
-
-(async () => await sequelize.sync({ force: false })
-  .catch((err) => {
-    console.log('Server now listening on PORT:', PORT);
-  })
-)();
-
 //? alter: true/false or force: true/false
-/* sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log('Server now listening on PORT:', PORT));
-}); */
+(async() => await sequelize.sync({ force: true })
+  .then(() => {
+    app.listen(PORT, () => console.log('Server listening on PORT:', PORT))
+  }))().catch(err => err);

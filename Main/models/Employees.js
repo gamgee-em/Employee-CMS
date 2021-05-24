@@ -5,12 +5,12 @@ class Employee extends Model {}
 
 Employee.init(
   {
-    id: {
+    /* emp_id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
       allowNull: false,
-    },
+    }, */
     fname: { type: DataTypes.STRING },
     lname: { type: DataTypes.STRING },
     role: { type: DataTypes.STRING },
@@ -26,18 +26,5 @@ Employee.init(
     tableName: 'Employees',
   }
 );
-
-/* const Employee = sequelize.define('Employee',{
-    fname: Sequelize.STRING,
-    lname: Sequelize.STRING,
-    department: Sequelize.STRING,
-    role: Sequelize.TEXT,
-    salary: Sequelize.INTEGER,
-},{
-    tableName: 'Employees'
-}); */
-
-//! check if code executed
-console.log(Employee === sequelize.models.Employee);
 
 module.exports = Employee;
