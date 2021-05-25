@@ -6,6 +6,7 @@ const actionQ = [
       choices: [
         'Add Department', 
         'Add Employee',
+        'Add Manager',
         'View All Employees',
         'Remove an Employee',
         'Quit',
@@ -29,6 +30,11 @@ const empGenQ = [
     message: 'What is their role?',
     type: 'list',
     choices: ['Engineer', 'Manager'],
+  },
+  {
+    name: 'emp_salary',
+    message: 'Enter employee annual salary:',
+    type: 'input',
   },
   {
     name: 'manager_name',
@@ -55,6 +61,14 @@ const managerQ = [
       type: 'input',
     }
 ];
+
+const engineerQ = [
+  {
+    name: 'engineer_salary',
+    message: 'Enter annual salary:',
+    type: 'input',
+  }
+]
 
 module.exports = {
     actionQ, 

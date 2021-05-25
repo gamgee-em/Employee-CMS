@@ -14,6 +14,7 @@ Employee.init(
     fname: { type: DataTypes.STRING },
     lname: { type: DataTypes.STRING },
     emp_role: { type: DataTypes.STRING },
+    emp_salary: { type: DataTypes.INTEGER() },
     manager_name: { type: DataTypes.STRING },
   },
   {
