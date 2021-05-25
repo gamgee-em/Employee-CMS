@@ -52,9 +52,9 @@ const renderEmployee = (answers) => {
 };
 
 const displayEmployees = async(answers) => {
-    console.log(newEmp)
-    //const newEmp = await Employee.findAll();
-    //console.table('Employees', ['emp_id','fname', 'lname', 'emp_role', 'manager_name']);
+    newEmp = await Employee.findAll({raw: true});
+    console.table(newEmp)
+    initApp();
 };
 
 const renderEmpRole = () => {
