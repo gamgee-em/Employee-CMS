@@ -9,8 +9,6 @@ const { init } = require('./models/Employees');
 const PORT = process.env.PORT || 3001;
 
 // IIFE starts application when node index.js is ran 
-// turn on connection to db and server
-//? alter: true/false or force: true/false
 (async() => await sequelize.sync({ force: true })
   .then(() => {
     console.log('Server listening on PORT:', PORT)

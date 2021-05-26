@@ -35,6 +35,13 @@ const empGenQ = [
     name: 'emp_salary',
     message: 'Enter employee annual salary:',
     type: 'input',
+    choices: ['Engineer', 'Manager'],
+  },
+  {
+    name: 'emp_department',
+    message: 'Enter employee department:',
+    type: 'list',
+    choices: ['Legal', 'Accounting', 'Engineering']
   },
   {
     name: 'manager_name',
